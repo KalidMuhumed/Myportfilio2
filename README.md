@@ -16,6 +16,11 @@ Personal portfolio skeleton for **Kalid Muhumed** — fullstack developer & auto
 - Sticky navbar with logo, section links, and GitHub / LinkedIn / email icons
 - Mobile menu (lightweight, no heavy frames)
 - Centered hero with portrait fade, name, role line, and “Kontakta mig” CTA
+- Projects grid (“Utvalda projekt”) with mockups, tech tags, Live Demo / GitHub
+
+### Portrait photo
+
+Drop a photo at `public/profile.jpg`. The hero uses Next.js `<Image />` and falls back to `public/portrait-placeholder.svg` if the file is missing.
 
 ## Run locally
 

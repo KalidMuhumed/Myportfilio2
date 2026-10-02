@@ -1,6 +1,19 @@
+import fs from "node:fs";
+import path from "node:path";
 import Image from "next/image";
 
+const PROFILE_SRC = "/profile.jpg";
+const FALLBACK_SRC = "/portrait-placeholder.svg";
+
+function resolvePortraitSrc() {
+  const absolute = path.join(process.cwd(), "public", "profile.jpg");
+  return fs.existsSync(absolute) ? PROFILE_SRC : FALLBACK_SRC;
+}
+
 export function Hero() {
+  const portraitSrc = resolvePortraitSrc();
+  const usingProfile = portraitSrc === PROFILE_SRC;
+
   return (
     <section
       id="home"
@@ -15,8 +28,12 @@ export function Hero() {
         <div className="animate-fade-in relative mb-8 h-56 w-56 sm:h-64 sm:w-64">
           <div className="portrait-fade absolute inset-0 overflow-hidden">
             <Image
-              src="/portrait-placeholder.svg"
-              alt="Portrait placeholder for Kalid Muhumed"
+              src={portraitSrc}
+              alt={
+                usingProfile
+                  ? "Portrait of Kalid Muhumed"
+                  : "Portrait placeholder for Kalid Muhumed"
+              }
               width={512}
               height={512}
               priority
