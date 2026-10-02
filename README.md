@@ -17,6 +17,7 @@ Personal portfolio skeleton for **Kalid Muhumed** — fullstack developer & auto
 - Mobile menu (lightweight, no heavy frames)
 - Centered hero with portrait fade, name, role line, and “Kontakta mig” CTA
 - Projects grid (“Utvalda projekt”) with mockups, tech tags, Live Demo / GitHub
+- About Me with tech stack groups + Contact form (client-side) + footer
 
 ### Portrait photo
 
