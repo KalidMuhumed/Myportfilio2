@@ -1,7 +1,5 @@
-"use client";
-
-import { useState, type SVGProps } from "react";
 import { Mail, Menu, X } from "lucide-react";
+import type { SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number; strokeWidth?: number };
 
@@ -74,31 +72,31 @@ const socialLinks = [
 ];
 
 export function Navbar() {
-  const [open, setOpen] = useState(false);
-
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <a
           href="#home"
-          className="flex h-9 w-9 items-center justify-center rounded-md bg-card border border-border text-sm font-semibold tracking-tight text-foreground transition-colors hover:border-accent/40"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border bg-card text-sm font-semibold tracking-tight text-foreground transition-colors hover:border-accent/40"
           aria-label="Kalid Muhumed home"
         >
           KM
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-xs font-medium tracking-[0.14em] text-muted transition-colors hover:text-accent"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <nav aria-label="Primary" className="hidden md:block">
+          <ul className="flex items-center gap-8">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-xs font-medium tracking-[0.14em] text-muted transition-colors hover:text-accent"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <div className="hidden items-center gap-3 md:flex">
           {socialLinks.map(({ href, label, icon: Icon }) => (
@@ -115,53 +113,50 @@ export function Navbar() {
           ))}
         </div>
 
-        <button
-          type="button"
-          className="inline-flex items-center justify-center text-muted transition-colors hover:text-accent md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((value) => !value)}
-        >
-          {open ? <X size={22} strokeWidth={1.75} /> : <Menu size={22} strokeWidth={1.75} />}
-        </button>
-      </nav>
+        <details className="group md:hidden">
+          <summary
+            className="flex list-none cursor-pointer items-center justify-center text-muted transition-colors hover:text-accent group-open:text-accent [&::-webkit-details-marker]:hidden"
+            aria-label="Toggle menu"
+          >
+            <Menu size={22} strokeWidth={1.75} className="group-open:hidden" />
+            <X size={22} strokeWidth={1.75} className="hidden group-open:block" />
+          </summary>
 
-      {open ? (
-        <div
-          id="mobile-menu"
-          className="border-t border-border bg-background px-4 py-5 md:hidden"
-        >
-          <ul className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
+          <div
+            id="mobile-menu"
+            className="absolute inset-x-0 top-16 border-b border-border bg-background px-4 py-5"
+          >
+            <nav aria-label="Mobile">
+              <ul className="flex flex-col gap-4">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="text-sm font-medium tracking-[0.14em] text-muted transition-colors hover:text-accent"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div className="mt-6 flex items-center gap-4">
+              {socialLinks.map(({ href, label, icon: Icon }) => (
                 <a
-                  href={link.href}
-                  className="text-sm font-medium tracking-[0.14em] text-muted transition-colors hover:text-accent"
-                  onClick={() => setOpen(false)}
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  aria-label={label}
+                  className="text-muted transition-colors hover:text-accent"
                 >
-                  {link.label}
+                  <Icon size={18} strokeWidth={1.75} />
                 </a>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-6 flex items-center gap-4">
-            {socialLinks.map(({ href, label, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("mailto:") ? undefined : "_blank"}
-                rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                aria-label={label}
-                className="text-muted transition-colors hover:text-accent"
-                onClick={() => setOpen(false)}
-              >
-                <Icon size={18} strokeWidth={1.75} />
-              </a>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ) : null}
+        </details>
+      </div>
     </header>
   );
 }
