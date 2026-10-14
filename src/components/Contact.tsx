@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Mail } from "lucide-react";
+import { useDictionary } from "@/i18n/LanguageProvider";
 
 function GithubIcon({ size = 18 }: { size?: number }) {
   return (
@@ -51,12 +52,12 @@ const directLinks = [
     icon: Mail,
   },
   {
-    href: "https://github.com/",
+    href: "https://github.com/KalidMuhumed",
     label: "GitHub",
     icon: GithubIcon,
   },
   {
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/kalid-muhumed-32451b1aa/",
     label: "LinkedIn",
     icon: LinkedinIcon,
   },
@@ -65,6 +66,7 @@ const directLinks = [
 type Status = "idle" | "error" | "success";
 
 export function Contact() {
+  const { contact } = useDictionary();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -80,18 +82,18 @@ export function Contact() {
 
     if (!trimmedName || !trimmedEmail || !trimmedMessage) {
       setStatus("error");
-      setFeedback("Fyll i namn, e-post och meddelande innan du skickar.");
+      setFeedback(contact.errorRequired);
       return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
       setStatus("error");
-      setFeedback("Ange en giltig e-postadress.");
+      setFeedback(contact.errorEmail);
       return;
     }
 
     setStatus("success");
-    setFeedback("Tack! Ditt meddelande är redo — jag återkommer så snart jag kan.");
+    setFeedback(contact.success);
     setName("");
     setEmail("");
     setMessage("");
@@ -108,14 +110,13 @@ export function Contact() {
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.28em] text-accent">
-            Contact
+            {contact.eyebrow}
           </p>
           <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
-            Let&apos;s connect
+            {contact.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted">
-            Har du ett projekt, en automationsidé eller bara en fråga? Skicka
-            ett meddelande — eller nå mig direkt via e-post och sociala länkar.
+            {contact.intro}
           </p>
 
           <ul className="mt-8 space-y-4">
@@ -148,7 +149,7 @@ export function Contact() {
                 htmlFor="contact-name"
                 className="mb-2 block text-xs font-medium uppercase tracking-[0.14em] text-muted"
               >
-                Namn
+                {contact.name}
               </label>
               <input
                 id="contact-name"
@@ -162,7 +163,7 @@ export function Contact() {
                   if (status !== "idle") setStatus("idle");
                 }}
                 className={inputClassName}
-                placeholder="Ditt namn"
+                placeholder={contact.namePlaceholder}
               />
             </div>
 
@@ -171,7 +172,7 @@ export function Contact() {
                 htmlFor="contact-email"
                 className="mb-2 block text-xs font-medium uppercase tracking-[0.14em] text-muted"
               >
-                E-post
+                {contact.email}
               </label>
               <input
                 id="contact-email"
@@ -185,7 +186,7 @@ export function Contact() {
                   if (status !== "idle") setStatus("idle");
                 }}
                 className={inputClassName}
-                placeholder="namn@exempel.se"
+                placeholder={contact.emailPlaceholder}
               />
             </div>
 
@@ -194,7 +195,7 @@ export function Contact() {
                 htmlFor="contact-message"
                 className="mb-2 block text-xs font-medium uppercase tracking-[0.14em] text-muted"
               >
-                Meddelande
+                {contact.message}
               </label>
               <textarea
                 id="contact-message"
@@ -207,7 +208,7 @@ export function Contact() {
                   if (status !== "idle") setStatus("idle");
                 }}
                 className={`${inputClassName} resize-y min-h-[140px]`}
-                placeholder="Berätta kort om ditt projekt eller din fråga…"
+                placeholder={contact.messagePlaceholder}
               />
             </div>
           </div>
@@ -216,7 +217,7 @@ export function Contact() {
             type="submit"
             className="mt-6 inline-flex w-full items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-medium tracking-wide text-background transition-opacity hover:opacity-90 sm:w-auto"
           >
-            Skicka meddelande
+            {contact.submit}
           </button>
 
           <p

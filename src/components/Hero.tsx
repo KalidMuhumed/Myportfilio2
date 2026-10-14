@@ -1,65 +1,55 @@
-import fs from "node:fs";
-import path from "node:path";
+"use client";
+
 import Image from "next/image";
-
-const PROFILE_SRC = "/profile.jpg";
-const FALLBACK_SRC = "/portrait-placeholder.svg";
-
-function resolvePortraitSrc() {
-  const absolute = path.join(process.cwd(), "public", "profile.jpg");
-  return fs.existsSync(absolute) ? PROFILE_SRC : FALLBACK_SRC;
-}
+import Link from "next/link";
+import { useDictionary } from "@/i18n/LanguageProvider";
 
 export function Hero() {
-  const portraitSrc = resolvePortraitSrc();
-  const usingProfile = portraitSrc === PROFILE_SRC;
+  const { hero } = useDictionary();
 
   return (
     <section
       id="home"
-      className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden px-4 pb-16 pt-10 sm:px-6"
+      className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 pb-16 pt-10 sm:px-6"
     >
       <div
         aria-hidden
         className="animate-soft-glow pointer-events-none absolute inset-x-0 top-16 mx-auto h-[420px] w-[420px] max-w-[90vw] rounded-full bg-[radial-gradient(circle,rgba(217,119,87,0.12)_0%,transparent_68%)]"
       />
 
-      <div className="relative z-10 flex w-full max-w-xl flex-col items-center text-center">
-        <div className="animate-fade-in relative mb-8 h-56 w-56 sm:h-64 sm:w-64">
-          <div className="portrait-fade absolute inset-0 overflow-hidden">
-            <Image
-              src={portraitSrc}
-              alt={
-                usingProfile
-                  ? "Portrait of Kalid Muhumed"
-                  : "Portrait placeholder for Kalid Muhumed"
-              }
-              width={512}
-              height={512}
-              priority
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background via-background/80 to-transparent"
+      <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
+        <div className="animate-fade-in relative h-44 w-44 overflow-hidden rounded-full md:h-52 md:w-52">
+          <Image
+            fill
+            src="/hero-portrait.jpg"
+            alt={hero.portraitAlt}
+            className="object-cover object-[center_42%] scale-[1.2]"
+            sizes="(max-width: 768px) 176px, 208px"
+            priority
+            unoptimized
           />
         </div>
 
-        <h1 className="animate-fade-up font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl md:text-6xl [animation-delay:120ms]">
-          KALID MUHUMED
-        </h1>
-
-        <p className="animate-fade-up mt-4 text-xs font-medium uppercase tracking-[0.28em] text-muted sm:text-sm [animation-delay:240ms]">
-          Fullstack Developer &amp; Automation.
+        <p className="animate-fade-up mt-3 text-center text-xs font-medium tracking-wide text-zinc-400 sm:text-sm [animation-delay:80ms]">
+          {hero.name}
         </p>
 
-        <a
-          href="#contact"
-          className="animate-fade-up mt-10 inline-flex items-center justify-center rounded-md bg-accent px-7 py-3 text-sm font-medium tracking-wide text-background transition-opacity hover:opacity-90 [animation-delay:360ms]"
+        <h1 className="animate-fade-up mt-6 w-full px-2 font-sans text-[1.65rem] font-semibold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl [animation-delay:160ms] [overflow-wrap:anywhere]">
+          <span className="block">{hero.titleLine1}</span>
+          <span className="block">{hero.titleLine2}</span>
+        </h1>
+
+        <p className="animate-fade-up mt-5 max-w-lg px-2 text-base leading-relaxed text-muted sm:text-lg [animation-delay:240ms]">
+          {hero.intro}
+        </p>
+
+        <Link
+          href="/#contact"
+          className="animate-fade-up mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#c48a5a] to-[#a66b3f] px-7 py-3 text-sm font-medium tracking-wide text-white transition-opacity hover:opacity-90 [animation-delay:320ms]"
         >
-          Kontakta mig
-        </a>
+          {hero.cta}
+          <span aria-hidden>→</span>
+        </Link>
       </div>
     </section>
   );

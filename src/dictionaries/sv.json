@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT ME",
+    "projects": "PROJECTS",
+    "contact": "CONTACT",
+    "toggleMenu": "Öppna meny",
+    "homeAria": "Kalid Muhumed startsida",
+    "primaryAria": "Huvudmeny",
+    "mobileAria": "Mobilmeny"
+  },
+  "hero": {
+    "name": "Kalid Muhumed",
+    "titleLine1": "Computer Engineer &",
+    "titleLine2": "Fullstack Automation",
+    "intro": "Jag är en dataingenjör och utvecklare som bygger moderna webbapplikationer, smarta automationer och AI-drivna flöden som effektiviserar verksamheter.",
+    "cta": "Kontakta mig",
+    "portraitAlt": "Porträtt av Kalid Muhumed"
+  },
+  "about": {
+    "eyebrow": "About me",
+    "title": "Bakgrund, utbildning & skills",
+    "backgroundTitle": "Bakgrund",
+    "paragraphs": [
+      "Jag heter Kalid Muhumed — fullstack developer med fokus på automation. Jag bygger webbappar i Next.js och kopplar ihop dem med Python-tjänster, APIs och webhooks så att manuella steg blir pålitliga flöden.",
+      "Oavsett om det handlar om en dashboard, en lead-pipeline eller en nattlig synk mellan system, vill jag att resultatet ska kännas enkelt för användaren och robust under huven.",
+      "Just nu arbetar jag med projekt där gränssnitt, data och automatiserade workflows möts — från prototyp till något som går att lita på i produktion."
+    ],
+    "educationTitle": "Utbildning",
+    "education": [
+      {
+        "title": "Data / nätverk & systemutveckling",
+        "detail": "Praktisk inriktning mot nätverk, dataflöden och moderna webbstackar — med fokus på lösningar som håller i produktion."
+      },
+      {
+        "title": "Automation & integrationer",
+        "detail": "Fördjupning i n8n, webhooks och Python-baserade flöden som eliminerar manuella steg mellan system."
+      }
+    ],
+    "skillsTitle": "Färdigheter",
+    "skillsIntro": "Tech stack grupperad efter hur jag faktiskt jobbar.",
+    "skillGroups": [
+      {
+        "title": "Frontend",
+        "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML / CSS"]
+      },
+      {
+        "title": "Backend",
+        "skills": ["Python", "Node.js", "REST APIs", "PostgreSQL", "Webhooks"]
+      },
+      {
+        "title": "Automation & verktyg",
+        "skills": ["n8n", "Workflow-automation", "API-integrationer", "Git", "Docker"]
+      }
+    ]
+  },
+  "projects": {
+    "eyebrow": "Portfolio",
+    "title": "Utvalda projekt",
+    "intro": "Ett urval fullstack- och automationsprojekt — från webhook-pipelines till dashboards som håller ihop affärsflöden.",
+    "liveDemo": "Live Demo",
+    "github": "GitHub",
+    "mockupAlt": "Mockup för {title}",
+    "items": [
+      {
+        "title": "Order Sync Hub",
+        "description": "Fullstack-dashboard som synkar Shopify- och WooCommerce-ordrar till en vy, med webhook-retries och Slack-aviseringar när en synk misslyckas.",
+        "tags": ["Next.js", "TypeScript", "Webhooks", "PostgreSQL"]
+      },
+      {
+        "title": "Lead Intake Automator",
+        "description": "n8n + Next.js-pipeline som rensar formulärleads, berikar dem via API och skickar heta prospects till CRM med en granskningskö för teamet.",
+        "tags": ["n8n", "Next.js", "Python", "Webhooks"]
+      },
+      {
+        "title": "Invoice Flow",
+        "description": "Automation som gör godkända tidrapporter till PDF-fakturor, skickar dem till Fortnox och mejlar kunder — med ett Tailwind-admin-UI.",
+        "tags": ["Tailwind", "Python", "n8n", "API"]
+      },
+      {
+        "title": "Site Monitor Bot",
+        "description": "Uptime- och innehållsövervakning för klientwebbplatser. Sparar checks i SQLite, visar en statussida och notifierar on-call via Discord.",
+        "tags": ["Next.js", "Python", "Tailwind", "SQLite"]
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's connect",
+    "intro": "Har du ett projekt, en automationsidé eller bara en fråga? Skicka ett meddelande — eller nå mig direkt via e-post och sociala länkar.",
+    "name": "Namn",
+    "namePlaceholder": "Ditt namn",
+    "email": "E-post",
+    "emailPlaceholder": "namn@exempel.se",
+    "message": "Meddelande",
+    "messagePlaceholder": "Berätta kort om ditt projekt eller din fråga…",
+    "submit": "Skicka meddelande",
+    "errorRequired": "Fyll i namn, e-post och meddelande innan du skickar.",
+    "errorEmail": "Ange en giltig e-postadress.",
+    "success": "Tack! Ditt meddelande är redo — jag återkommer så snart jag kan."
+  },
+  "footer": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "tagline": "© {year} Kalid Muhumed. Fullstack & Automation.",
+    "aria": "Sidfot"
+  },
+  "language": {
+    "switchAria": "Välj språk",
+    "en": "EN",
+    "sv": "SV"
+  }
+}

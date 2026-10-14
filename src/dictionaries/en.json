@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT ME",
+    "projects": "PROJECTS",
+    "contact": "CONTACT",
+    "toggleMenu": "Toggle menu",
+    "homeAria": "Kalid Muhumed home",
+    "primaryAria": "Primary",
+    "mobileAria": "Mobile"
+  },
+  "hero": {
+    "name": "Kalid Muhumed",
+    "titleLine1": "Computer Engineer &",
+    "titleLine2": "Fullstack Automation",
+    "intro": "I'm a computer engineer and fullstack developer building scalable web applications, smart workflow automations, and AI integrations.",
+    "cta": "Contact me",
+    "portraitAlt": "Portrait of Kalid Muhumed"
+  },
+  "about": {
+    "eyebrow": "About me",
+    "title": "Background, education & skills",
+    "backgroundTitle": "Background",
+    "paragraphs": [
+      "I'm Kalid Muhumed — a fullstack developer focused on automation. I build web apps in Next.js and connect them with Python services, APIs, and webhooks so manual steps become reliable flows.",
+      "Whether it's a dashboard, a lead pipeline, or a nightly sync between systems, I want the result to feel simple for the user and solid under the hood.",
+      "Right now I'm working on projects where interfaces, data, and automated workflows meet — from prototype to something you can trust in production."
+    ],
+    "educationTitle": "Education",
+    "education": [
+      {
+        "title": "Data / networking & systems development",
+        "detail": "A practical focus on networks, data flows, and modern web stacks — building solutions that hold up in production."
+      },
+      {
+        "title": "Automation & integrations",
+        "detail": "Deep dives into n8n, webhooks, and Python-based flows that remove manual steps between systems."
+      }
+    ],
+    "skillsTitle": "Skills",
+    "skillsIntro": "Tech stack grouped by how I actually work.",
+    "skillGroups": [
+      {
+        "title": "Frontend",
+        "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML / CSS"]
+      },
+      {
+        "title": "Backend",
+        "skills": ["Python", "Node.js", "REST APIs", "PostgreSQL", "Webhooks"]
+      },
+      {
+        "title": "Automation & Tools",
+        "skills": ["n8n", "Workflow automation", "API integrations", "Git", "Docker"]
+      }
+    ]
+  },
+  "projects": {
+    "eyebrow": "Portfolio",
+    "title": "Selected projects",
+    "intro": "A selection of fullstack and automation projects — from webhook pipelines to dashboards that hold business flows together.",
+    "liveDemo": "Live Demo",
+    "github": "GitHub",
+    "mockupAlt": "Mockup for {title}",
+    "items": [
+      {
+        "title": "Order Sync Hub",
+        "description": "Fullstack dashboard that syncs Shopify and WooCommerce orders into one view, with webhook retries and Slack alerts when a sync fails.",
+        "tags": ["Next.js", "TypeScript", "Webhooks", "PostgreSQL"]
+      },
+      {
+        "title": "Lead Intake Automator",
+        "description": "n8n + Next.js pipeline that cleans form leads, enriches them via API, and routes hot prospects to CRM with a review queue for the team.",
+        "tags": ["n8n", "Next.js", "Python", "Webhooks"]
+      },
+      {
+        "title": "Invoice Flow",
+        "description": "Automation that turns approved time entries into PDF invoices, posts them to Fortnox, and emails clients — with a Tailwind admin UI.",
+        "tags": ["Tailwind", "Python", "n8n", "API"]
+      },
+      {
+        "title": "Site Monitor Bot",
+        "description": "Uptime and content-change monitor for client sites. Stores checks in SQLite, exposes a status page, and pages on-call via Discord.",
+        "tags": ["Next.js", "Python", "Tailwind", "SQLite"]
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's connect",
+    "intro": "Have a project, an automation idea, or just a question? Send a message — or reach me directly via email and social links.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "name@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Tell me briefly about your project or question…",
+    "submit": "Send message",
+    "errorRequired": "Please fill in name, email, and message before sending.",
+    "errorEmail": "Please enter a valid email address.",
+    "success": "Thanks! Your message is ready — I'll get back to you as soon as I can."
+  },
+  "footer": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "tagline": "© {year} Kalid Muhumed. Fullstack & Automation.",
+    "aria": "Footer"
+  },
+  "language": {
+    "switchAria": "Choose language",
+    "en": "EN",
+    "sv": "SV"
+  }
+}
