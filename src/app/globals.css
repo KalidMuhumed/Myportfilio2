@@ -51,6 +51,19 @@
   }
 }
 
+/* Tight halo: max scale = the 1px inset ring around the portrait */
+@keyframes portrait-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.994);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -58,6 +71,12 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .animate-portrait-glow {
+    animation: none;
+    opacity: 0.55;
+    transform: scale(1);
   }
 }
 
@@ -77,6 +96,12 @@ body {
 
 .animate-soft-glow {
   animation: soft-glow 6s ease-in-out infinite;
+}
+
+.animate-portrait-glow {
+  animation: portrait-glow 5.5s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform, opacity;
 }
 .portrait-fade {
   mask-image: linear-gradient(

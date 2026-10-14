@@ -12,13 +12,17 @@ export function Hero() {
       id="home"
       className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 pb-16 pt-10 sm:px-6"
     >
-      <div
-        aria-hidden
-        className="animate-soft-glow pointer-events-none absolute inset-x-0 top-16 mx-auto h-[420px] w-[420px] max-w-[90vw] rounded-full bg-[radial-gradient(circle,rgba(217,119,87,0.12)_0%,transparent_68%)]"
-      />
-
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
-        <div className="animate-fade-in relative h-44 w-44 overflow-hidden rounded-full md:h-52 md:w-52">
+        {/* Glow is centered on the portrait so it expands evenly around it */}
+        <div className="relative flex h-44 w-44 items-center justify-center md:h-52 md:w-52">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-[-1px] z-0"
+          >
+            <div className="animate-portrait-glow h-full w-full rounded-full bg-[radial-gradient(circle,transparent_72%,rgba(217,119,87,0.45)_88%,rgba(217,119,87,0.2)_96%,transparent_100%)]" />
+          </div>
+
+          <div className="animate-fade-in relative z-10 h-full w-full overflow-hidden rounded-full">
             <Image
               fill
               src="/hero-portrait.jpg"
@@ -28,6 +32,7 @@ export function Hero() {
               quality={95}
               priority
             />
+          </div>
         </div>
 
         <p className="animate-fade-up mt-3 text-center text-xs font-medium tracking-wide text-zinc-400 sm:text-sm [animation-delay:80ms]">
