@@ -1,32 +1,9 @@
 "use client";
 
 import { ExternalLink } from "lucide-react";
-import Image from "next/image";
-import { ChatWidget } from "@/chat-widget/ChatWidget";
+import { useRef, useState } from "react";
+import { StadhjalpenDemoWidget } from "@/chat-widget/StadhjalpenDemoWidget";
 import { useDictionary } from "@/i18n/LanguageProvider";
-
-const projectMeta = [
-  {
-    image: "/projects/order-sync.svg",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    image: "/projects/lead-intake.svg",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    image: "/projects/invoice-flow.svg",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    image: "/projects/site-monitor.svg",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-] as const;
 
 function GithubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -48,40 +25,84 @@ function GithubIcon({ size = 16 }: { size?: number }) {
   );
 }
 
+function DemoActions({
+  liveDemoLabel,
+  githubLabel,
+  hint,
+  onReplay,
+}: {
+  liveDemoLabel: string;
+  githubLabel: string;
+  hint: string;
+  onReplay: () => void;
+}) {
+  const buttonClassName =
+    "inline-flex min-h-11 touch-manipulation select-none items-center gap-2 rounded-md border border-border bg-transparent px-3.5 py-2.5 text-sm text-foreground transition-colors hover:border-accent hover:text-accent active:border-accent active:text-accent active:scale-[0.98]";
+
+  return (
+    <>
+      <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+        <button type="button" className={buttonClassName} onClick={onReplay}>
+          <ExternalLink size={16} strokeWidth={1.75} />
+          {liveDemoLabel}
+        </button>
+        <span
+          className="inline-flex min-h-11 cursor-default items-center gap-2 rounded-md border border-border px-3.5 py-2.5 text-sm text-muted opacity-70"
+          aria-disabled="true"
+        >
+          <GithubIcon size={16} />
+          {githubLabel}
+        </span>
+      </div>
+      <p className="mt-3 text-xs leading-relaxed text-muted/80">{hint}</p>
+    </>
+  );
+}
+
 export function Projects() {
   const { projects } = useDictionary();
+  const demoRef = useRef<HTMLDivElement>(null);
+
+  // Initial mount ("boot") waits until the widget is visible before playing.
+  // Live Demo bumps the key → widget remounts → plays immediately. No page reload.
+  const [demoKey, setDemoKey] = useState("boot");
+
+  const replayDemo = () => {
+    setDemoKey(String(Date.now()));
+    demoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <section
       id="projects"
-      className="scroll-mt-20 border-t border-border px-4 py-20 sm:px-6"
+      className="scroll-mt-20 border-t border-border px-4 py-14 sm:px-6 sm:py-20"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-8 max-w-2xl sm:mb-12">
           <p className="text-xs font-medium uppercase tracking-[0.28em] text-accent">
             {projects.eyebrow}
           </p>
-          <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-3 font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-4xl">
             {projects.title}
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted">
+          <p className="mt-3 text-[15px] leading-relaxed text-muted sm:mt-4 sm:text-base">
             {projects.intro}
           </p>
         </div>
 
-        <article className="mb-6 overflow-hidden rounded-[12px] border border-border bg-card">
-          <div className="grid gap-0 lg:grid-cols-[1fr_minmax(320px,400px)]">
-            <div className="flex flex-col justify-center border-b border-border p-6 sm:p-8 lg:border-b-0 lg:border-r">
+        <article className="overflow-hidden rounded-[12px] border border-border bg-card">
+          <div className="grid gap-0 lg:grid-cols-[1fr_minmax(300px,400px)]">
+            <div className="flex min-w-0 flex-col justify-center border-b border-border p-4 sm:p-6 md:p-8 lg:border-b-0 lg:border-r">
               <p className="text-xs font-medium uppercase tracking-[0.28em] text-accent">
                 {projects.featured.eyebrow}
               </p>
-              <h3 className="mt-3 text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+              <h3 className="mt-3 text-xl font-medium tracking-tight text-foreground sm:text-2xl md:text-3xl">
                 {projects.featured.title}
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
                 {projects.featured.description}
               </p>
-              <ul className="mt-5 flex flex-wrap gap-2">
+              <ul className="mt-4 flex flex-wrap gap-2 sm:mt-5">
                 {projects.featured.tags.map((tag) => (
                   <li
                     key={tag}
@@ -91,85 +112,43 @@ export function Projects() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-xs leading-relaxed text-muted/80">
-                {projects.featured.hint}
-              </p>
+
+              <div className="mt-5 hidden md:mt-6 md:block">
+                <DemoActions
+                  liveDemoLabel={projects.liveDemo}
+                  githubLabel={projects.github}
+                  hint={projects.featured.hint}
+                  onReplay={replayDemo}
+                />
+              </div>
             </div>
 
-            <div className="relative flex min-h-[580px] items-end justify-center bg-[#141413] px-4 pb-5 pt-8 sm:px-6">
+            <div
+              ref={demoRef}
+              className="relative z-0 min-h-[600px] scroll-mt-20 overflow-hidden bg-[#141413] sm:min-h-[640px]"
+            >
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(217,119,87,0.08),transparent_55%)]"
               />
-              <ChatWidget
-                tenantId="stadhjalpen"
-                defaultOpen
-                className="relative z-[1]"
+              <div className="relative h-full min-h-[600px] sm:min-h-[640px]">
+                <StadhjalpenDemoWidget
+                  key={demoKey}
+                  autoStart={demoKey === "boot" ? "visible" : "immediate"}
+                />
+              </div>
+            </div>
+
+            <div className="relative z-50 border-t border-border bg-card p-4 md:hidden">
+              <DemoActions
+                liveDemoLabel={projects.liveDemo}
+                githubLabel={projects.github}
+                hint={projects.featured.hint}
+                onReplay={replayDemo}
               />
             </div>
           </div>
         </article>
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {projects.items.map((project, index) => {
-            const meta = projectMeta[index];
-            if (!meta) return null;
-
-            return (
-              <article
-                key={project.title}
-                className="flex flex-col overflow-hidden rounded-[12px] border border-border bg-card transition-colors hover:border-white/15"
-              >
-                <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-border bg-[#181816]">
-                  <Image
-                    src={meta.image}
-                    alt={projects.mockupAlt.replace("{title}", project.title)}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-xl font-medium tracking-tight text-foreground">
-                    {project.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {project.description}
-                  </p>
-
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <li
-                        key={tag}
-                        className="rounded-md border border-border px-2.5 py-1 text-xs tracking-wide text-muted"
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 flex flex-wrap items-center gap-3">
-                    <a
-                      href={meta.liveUrl}
-                      className="inline-flex items-center gap-2 rounded-md border border-border px-3.5 py-2 text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
-                    >
-                      <ExternalLink size={16} strokeWidth={1.75} />
-                      {projects.liveDemo}
-                    </a>
-                    <a
-                      href={meta.githubUrl}
-                      className="inline-flex items-center gap-2 rounded-md border border-border px-3.5 py-2 text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
-                    >
-                      <GithubIcon size={16} />
-                      {projects.github}
-                    </a>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

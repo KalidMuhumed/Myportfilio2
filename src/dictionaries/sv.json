@@ -22,15 +22,15 @@
     "title": "Bakgrund, utbildning & skills",
     "backgroundTitle": "Bakgrund",
     "paragraphs": [
-      "Jag heter Kalid Muhumed — fullstack developer med fokus på automation. Jag bygger webbappar i Next.js och kopplar ihop dem med Python-tjänster, APIs och webhooks så att manuella steg blir pålitliga flöden.",
+      "Jag heter Kalid Muhumed, fullstack developer med fokus på automation. Jag bygger webbappar i Next.js och kopplar ihop dem med Python-tjänster, APIs och webhooks så att manuella steg blir pålitliga flöden.",
       "Oavsett om det handlar om en dashboard, en lead-pipeline eller en nattlig synk mellan system, vill jag att resultatet ska kännas enkelt för användaren och robust under huven.",
-      "Just nu arbetar jag med projekt där gränssnitt, data och automatiserade workflows möts — från prototyp till något som går att lita på i produktion."
+      "Just nu arbetar jag med projekt där gränssnitt, data och automatiserade workflows möts, från prototyp till något som går att lita på i produktion."
     ],
     "educationTitle": "Utbildning",
     "education": [
       {
         "title": "Data / nätverk & systemutveckling",
-        "detail": "Praktisk inriktning mot nätverk, dataflöden och moderna webbstackar — med fokus på lösningar som håller i produktion."
+        "detail": "Praktisk inriktning mot nätverk, dataflöden och moderna webbstackar, med fokus på lösningar som håller i produktion."
       },
       {
         "title": "Automation & integrationer",
@@ -57,44 +57,23 @@
   "projects": {
     "eyebrow": "Portfolio",
     "title": "Utvalda projekt",
-    "intro": "Ett urval fullstack- och automationsprojekt — från webhook-pipelines till dashboards som håller ihop affärsflöden.",
+    "intro": "Ett urval fullstack- och automationsprojekt, från webhook-pipelines till dashboards som håller ihop affärsflöden.",
     "liveDemo": "Live Demo",
     "github": "GitHub",
     "mockupAlt": "Mockup för {title}",
     "featured": {
       "eyebrow": "Live demo",
-      "title": "AI Tenant Chat — Städhjälpen Väst",
-      "description": "Multi-tenant AI-chattwidget. Denna demo kör tenant-id stadhjalpen med auto-play: besökaren skriver i inputfältet, AI svarar med typing-indikator — en bokningsdialog för hemstädning i Göteborg.",
-      "tags": ["Next.js", "Multi-tenant", "AI Chat", "TypeScript"],
-      "hint": "Öppna widgeten (eller ladda om sidan) för att spela upp konversationen en gång."
+      "title": "AI Tenant Chat, Städhjälpen Väst",
+      "description": "AI-chattwidget för Städhjälpen Väst. Auto-play visar hur assistenten frågar, kollar tider och skickar en bokningsförfrågan via formulär. Den bokar inte själv.",
+      "tags": ["Next.js", "AI Chat", "TypeScript"],
+      "hint": "Tryck Live Demo för att spela upp konversationen igen eller scrolla upp och ner."
     },
-    "items": [
-      {
-        "title": "Order Sync Hub",
-        "description": "Fullstack-dashboard som synkar Shopify- och WooCommerce-ordrar till en vy, med webhook-retries och Slack-aviseringar när en synk misslyckas.",
-        "tags": ["Next.js", "TypeScript", "Webhooks", "PostgreSQL"]
-      },
-      {
-        "title": "Lead Intake Automator",
-        "description": "n8n + Next.js-pipeline som rensar formulärleads, berikar dem via API och skickar heta prospects till CRM med en granskningskö för teamet.",
-        "tags": ["n8n", "Next.js", "Python", "Webhooks"]
-      },
-      {
-        "title": "Invoice Flow",
-        "description": "Automation som gör godkända tidrapporter till PDF-fakturor, skickar dem till Fortnox och mejlar kunder — med ett Tailwind-admin-UI.",
-        "tags": ["Tailwind", "Python", "n8n", "API"]
-      },
-      {
-        "title": "Site Monitor Bot",
-        "description": "Uptime- och innehållsövervakning för klientwebbplatser. Sparar checks i SQLite, visar en statussida och notifierar on-call via Discord.",
-        "tags": ["Next.js", "Python", "Tailwind", "SQLite"]
-      }
-    ]
+    "items": []
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's connect",
-    "intro": "Har du ett projekt, en automationsidé eller bara en fråga? Skicka ett meddelande — eller nå mig direkt via e-post och sociala länkar.",
+    "intro": "Har du ett projekt, en automationsidé eller bara en fråga? Skicka ett meddelande, eller nå mig direkt via e-post och sociala länkar.",
     "name": "Namn",
     "namePlaceholder": "Ditt namn",
     "email": "E-post",
@@ -104,7 +83,7 @@
     "submit": "Skicka meddelande",
     "errorRequired": "Fyll i namn, e-post och meddelande innan du skickar.",
     "errorEmail": "Ange en giltig e-postadress.",
-    "success": "Tack! Ditt meddelande är redo — jag återkommer så snart jag kan."
+    "success": "Tack! Ditt meddelande är redo. Jag återkommer så snart jag kan."
   },
   "footer": {
     "home": "Home",

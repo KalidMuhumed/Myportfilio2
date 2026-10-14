@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Order Sync Hub",
+    "description": "Fullstack-dashboard som synkar Shopify- och WooCommerce-ordrar till en vy, med webhook-retries och Slack-aviseringar när en synk misslyckas.",
+    "tags": ["Next.js", "TypeScript", "Webhooks", "PostgreSQL"],
+    "image": "/projects/order-sync.svg"
+  },
+  {
+    "title": "Lead Intake Automator",
+    "description": "n8n + Next.js-pipeline som rensar formulärleads, berikar dem via API och skickar heta prospects till CRM med en granskningskö för teamet.",
+    "tags": ["n8n", "Next.js", "Python", "Webhooks"],
+    "image": "/projects/lead-intake.svg"
+  },
+  {
+    "title": "Invoice Flow",
+    "description": "Automation som gör godkända tidrapporter till PDF-fakturor, skickar dem till Fortnox och mejlar kunder, med ett Tailwind-admin-UI.",
+    "tags": ["Tailwind", "Python", "n8n", "API"],
+    "image": "/projects/invoice-flow.svg"
+  },
+  {
+    "title": "Site Monitor Bot",
+    "description": "Uptime- och innehållsövervakning för klientwebbplatser. Sparar checks i SQLite, visar en statussida och notifierar on-call via Discord.",
+    "tags": ["Next.js", "Python", "Tailwind", "SQLite"],
+    "image": "/projects/site-monitor.svg"
+  }
+]

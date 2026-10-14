@@ -1,0 +1,25 @@
+---
+description: Always design and build mobile-first; most visitors use phones
+alwaysApply: true
+---
+
+# Mobile-first (always)
+
+Most visitors use **mobile**. Design and implement for small screens first, then enhance for tablet/desktop. Do not ship desktop-only layouts that need a later mobile rewrite.
+
+## Rules
+
+- **Mobile first:** default styles for ~320–430px width; add `sm:` / `md:` / `lg:` only when needed.
+- **Touch targets:** buttons/links at least ~44px tap area where practical.
+- **No horizontal overflow:** avoid fixed widths that break the viewport; prefer `max-w-full`, `%`, `min-w-0`, flex/grid that wraps.
+- **Readable type:** body ~14–16px on mobile; avoid huge headings that force awkward wraps without testing.
+- **Spacing:** use tighter padding on mobile (`p-4` / `px-4`), more room from `sm:` up.
+- **Stacked layouts:** multi-column grids (`md:grid-cols-2`, `lg:grid-cols-…`) must stack cleanly on mobile.
+- **Embedded widgets** (chat demos, etc.): must fit the panel on mobile; adjust height, padding, and scroll inside the widget, not the whole page awkwardly.
+- **Test mentally at 375px** before finishing UI work. If unsure, prefer simpler stacked layout over cramped side-by-side.
+
+## Anti-patterns
+
+- Desktop-only fixed pixel widths for main content
+- Side-by-side UI that becomes unusable under ~640px without a stack fallback
+- Tiny tap targets, clipped text, or double scroll traps without intent

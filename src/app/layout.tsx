@@ -22,9 +22,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Kalid Muhumed — Fullstack Developer & Automation",
+  title: "Kalid Muhumed | Fullstack Developer & Automation",
   description:
-    "Portfolio for Kalid Muhumed — fullstack developer focused on automation, clean interfaces, and reliable systems.",
+    "Portfolio for Kalid Muhumed, fullstack developer focused on automation, clean interfaces, and reliable systems.",
   icons: {
     icon: "/favicon.svg?v=1",
     apple: "/favicon.svg?v=1",

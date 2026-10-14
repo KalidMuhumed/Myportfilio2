@@ -1,41 +1,65 @@
-# Projects section (archived)
+# Projects UI layout (saved for later)
 
-The **Selected projects / Utvalda projekt** grid is turned off so the homepage stays clean (Hero → Contact).
+Live site shows **only** the featured project: **AI Tenant Chat, Städhjälpen Väst**.  
+Placeholder cards (Order Sync Hub, Lead Intake, Invoice Flow, Site Monitor) were removed from the homepage.
 
-## What’s saved
+**Mobile-first:** most visitors use phones. Stack featured content on small screens; only split left/right from `lg:`. Keep tap targets ~44px and avoid horizontal overflow. See `.cursor/rules/mobile-first.mdc`.
 
-| Path | Purpose |
-|------|---------|
-| `Projects.tsx` | Full section component (cards, tags, Live Demo / GitHub) |
-| `../../dictionaries/sv.json` → `projects` | Swedish copy (still in live dictionaries) |
-| `../../dictionaries/en.json` → `projects` | English copy (still in live dictionaries) |
-| `/public/projects/*.svg` | Placeholder mockups |
+## Layout A: Featured split (in use)
 
-## How to activate again
+Used for interactive demos (chat widget).
 
-1. Copy `Projects.tsx` back to `src/components/Projects.tsx`  
-   (or move this file there).
-2. In `src/app/page.tsx`:
-
-```tsx
-import { Projects } from "@/components/Projects";
-
-// …
-<Hero />
-<Projects />
-<Contact />
+```
+┌─────────────────────────────────────────────────────────┐
+│  Utvalda projekt (section title)                        │
+├──────────────────────────┬──────────────────────────────┤
+│  LEFT                    │  RIGHT                       │
+│  eyebrow / title         │  live widget / media         │
+│  description             │  (min-h ~600px, dark bg)     │
+│  tags                    │                              │
+│  Live Demo + GitHub      │                              │
+│  hint                    │                              │
+└──────────────────────────┴──────────────────────────────┘
 ```
 
-3. Restore the nav / footer link:
+- File: `src/components/Projects.tsx`
+- Copy: `projects.featured` in `sv.json` / `en.json`
+- Widget: `src/chat-widget/StadhjalpenDemoWidget.tsx`
+- Autoplay starts when the widget scrolls into view (refresh-safe); Live Demo bumps the widget `key` to replay in place (no page refresh)
+- GitHub on featured is decorative (`span`, not a link)
+
+## Layout B: Card grid (placeholder template)
+
+For normal projects with mockup image + links. Pattern:
 
 ```tsx
-{ href: "/#projects", label: nav.projects },
-// and in Footer:
-{ href: "/#projects", label: footer.projects },
+<div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+  {projects.items.map((project, index) => (
+    <article className="flex flex-col overflow-hidden rounded-[12px] border border-border bg-card ...">
+      {/* image aspect-[16/10] */}
+      {/* title, description, tags */}
+      {/* Live Demo <a> + GitHub <a> */}
+    </article>
+  ))}
+</div>
 ```
 
-4. Replace placeholder `projectMeta` URLs and images with real projects when ready.
+Saved reference implementation:
 
-## Current site (without projects)
+- `Projects.grid-cards.tsx` (full card grid component snippet)
+- `placeholder-items.sv.json` / `placeholder-items.en.json` (old copy)
+- Mockups: `/public/projects/*.svg`
 
-Homepage: `Hero` → `Contact` only. Nav links: About, Contact (+ language switcher).
+## How to add another project later
+
+1. Prefer **Layout B** for static projects: put items back in `dictionaries` `projects.items` and render the grid under the featured article (see `Projects.grid-cards.tsx`).
+2. Prefer **Layout A** for another live demo: duplicate the featured `<article>` split and wire a new widget/ref.
+3. Keep button classes identical so the portfolio looks consistent:
+
+```
+inline-flex items-center gap-2 rounded-md border border-border px-3.5 py-2 text-sm ...
+```
+
+## Current homepage
+
+`Hero` → `Projects` (featured only) → `Contact`

@@ -42,7 +42,7 @@ export const stadhjalpenTenant: TenantConfig = {
     },
     {
       role: "ai",
-      text: "Självklart — ska jag boka 09:00 här i chatten?",
+      text: "Självklart, ska jag boka 09:00 här i chatten?",
     },
   ],
 };
