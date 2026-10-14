@@ -61,6 +61,13 @@
     "liveDemo": "Live Demo",
     "github": "GitHub",
     "mockupAlt": "Mockup för {title}",
+    "featured": {
+      "eyebrow": "Live demo",
+      "title": "AI Tenant Chat — Städhjälpen Väst",
+      "description": "Multi-tenant AI-chattwidget. Denna demo kör tenant-id stadhjalpen med auto-play: besökaren skriver i inputfältet, AI svarar med typing-indikator — en bokningsdialog för hemstädning i Göteborg.",
+      "tags": ["Next.js", "Multi-tenant", "AI Chat", "TypeScript"],
+      "hint": "Öppna widgeten (eller ladda om sidan) för att spela upp konversationen en gång."
+    },
     "items": [
       {
         "title": "Order Sync Hub",

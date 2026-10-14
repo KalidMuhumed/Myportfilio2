@@ -1,0 +1,17 @@
+---
+description: Never start the Next.js/dev server — user runs it in PowerShell
+alwaysApply: true
+---
+
+# Dev server: user-only
+
+- **Never** start, restart, or background `npm run dev`, `next dev`, `next start`, or similar for this project.
+- **Never** kill/occupy ports 3000/3001 unless the user explicitly asks you to free a stuck process.
+- The user runs the app themselves in PowerShell:
+
+```powershell
+cd C:\Main_web_Dev\Myportfilio2
+npm run dev -- --webpack
+```
+
+- After code changes, tell them to refresh or re-run that command. Do not launch the server to "verify".

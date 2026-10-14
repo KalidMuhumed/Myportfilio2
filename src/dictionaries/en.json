@@ -61,6 +61,13 @@
     "liveDemo": "Live Demo",
     "github": "GitHub",
     "mockupAlt": "Mockup for {title}",
+    "featured": {
+      "eyebrow": "Live demo",
+      "title": "AI Tenant Chat — Städhjälpen Väst",
+      "description": "Multi-tenant AI chat widget. This demo runs tenant-id stadhjalpen with auto-play: the visitor types in the input field, the AI replies with a typing indicator — a booking dialog for home cleaning in Gothenburg.",
+      "tags": ["Next.js", "Multi-tenant", "AI Chat", "TypeScript"],
+      "hint": "Open the widget (or reload the page) to play the conversation once."
+    },
     "items": [
       {
         "title": "Order Sync Hub",
