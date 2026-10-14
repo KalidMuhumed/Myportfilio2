@@ -19,15 +19,15 @@ export function Hero() {
 
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
         <div className="animate-fade-in relative h-44 w-44 overflow-hidden rounded-full md:h-52 md:w-52">
-          <Image
-            fill
-            src="/hero-portrait.jpg"
-            alt={hero.portraitAlt}
-            className="object-cover object-[center_42%] scale-[1.2]"
-            sizes="(max-width: 768px) 176px, 208px"
-            priority
-            unoptimized
-          />
+            <Image
+              fill
+              src="/hero-portrait.jpg"
+              alt={hero.portraitAlt}
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 352px, 416px"
+              quality={95}
+              priority
+            />
         </div>
 
         <p className="animate-fade-up mt-3 text-center text-xs font-medium tracking-wide text-zinc-400 sm:text-sm [animation-delay:80ms]">
