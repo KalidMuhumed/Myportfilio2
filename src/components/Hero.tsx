@@ -42,7 +42,7 @@ export function Hero() {
 
         <Link
           href="/#contact"
-          className="animate-fade-up mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#c48a5a] to-[#a66b3f] px-7 py-3 text-sm font-medium tracking-wide text-white transition-opacity hover:opacity-90 [animation-delay:320ms]"
+          className="animate-fade-up mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-medium tracking-wide text-background transition-opacity hover:opacity-90 [animation-delay:320ms]"
         >
           {hero.cta}
           <span aria-hidden>→</span>

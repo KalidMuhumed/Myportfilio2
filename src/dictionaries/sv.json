@@ -81,9 +81,29 @@
     "message": "Meddelande",
     "messagePlaceholder": "Berätta kort om ditt projekt eller din fråga…",
     "submit": "Skicka meddelande",
+    "sending": "Skickar…",
     "errorRequired": "Fyll i namn, e-post och meddelande innan du skickar.",
     "errorEmail": "Ange en giltig e-postadress.",
-    "success": "Tack! Ditt meddelande är redo. Jag återkommer så snart jag kan."
+    "errorSend": "Meddelandet kunde inte skickas. Försök igen, eller mejla kalid.automations@gmail.com.",
+    "errorLimit": "Du kan bara skicka ett meddelande per dygn. Försök igen imorgon, eller mejla kalid.automations@gmail.com.",
+    "success": "Tack! Meddelandet är skickat. Jag återkommer så snart jag kan.",
+    "privacyNote": "Dina uppgifter hanteras säkert och används enbart för att besvara din förfrågan. Läs mer i vår",
+    "privacyLink": "Integritetspolicy"
+  },
+  "privacy": {
+    "title": "Integritet & Datahantering",
+    "intro": "Vi värdesätter din integritet och bygger vår verksamhet på minimal datainsamling. Här är en transparent översikt över hur vi hanterar den information du delar med oss.",
+    "collectTitle": "Vilken information vi samlar in",
+    "collectBody": "När du kontaktar oss eller skickar en offertförfrågan via vårt formulär samlar vi in ditt namn, din e-postadress och ditt meddelande. För att skydda systemet mot skräppost används vår formulärtjänst (Web3Forms).",
+    "useTitle": "Hur vi använder informationen",
+    "useBody": "Dina uppgifter används uteslutande för att vi ska kunna läsa din förfrågan, utvärdera ditt förslag och återkomma till dig med ett svar. Informationen levereras direkt till vår e-post. Vi använder aldrig dina uppgifter för automatiserad marknadsföring, nyhetsbrev eller liknande, och vi delar inte din data med tredje part.",
+    "controlTitle": "Din kontroll över datan",
+    "controlBody": "Du har alltid rätt att få din information raderad. Om du vill att vi tar bort din offertförfrågan och dina kontaktuppgifter från våra system, skicka ett meddelande till kalid.automations@gmail.com så raderar vi e-postmeddelandet omedelbart."
+  },
+  "integrations": {
+    "eyebrow": "Integrationer",
+    "intro": "Jag kopplar samman dina system och automatiserar arbetsflöden. Från AI och CRM till betalningar. Här är några av mina integrationsverktyg.",
+    "aria": "Verktyg och plattformar"
   },
   "footer": {
     "home": "Home",

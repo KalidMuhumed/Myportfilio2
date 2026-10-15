@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import { Mail } from "lucide-react";
 import { useDictionary } from "@/i18n/LanguageProvider";
 
@@ -63,7 +64,29 @@ const directLinks = [
   },
 ];
 
-type Status = "idle" | "error" | "success";
+const WEB3FORMS_ACCESS_KEY = "dd931b1a-fc6a-44c5-a249-4ebfe0a7e24e";
+const SEND_LIMIT_MS = 24 * 60 * 60 * 1000;
+const SEND_LIMIT_KEY = "portfolio-contact-limit";
+
+type SendLimit = { at: number; email: string };
+
+function readSendLimit(): SendLimit | null {
+  try {
+    const raw = localStorage.getItem(SEND_LIMIT_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as SendLimit;
+    if (typeof parsed.at !== "number" || typeof parsed.email !== "string") return null;
+    if (Date.now() - parsed.at >= SEND_LIMIT_MS) {
+      localStorage.removeItem(SEND_LIMIT_KEY);
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+type Status = "idle" | "sending" | "error" | "success";
 
 export function Contact() {
   const { contact } = useDictionary();
@@ -73,8 +96,9 @@ export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
   const [feedback, setFeedback] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (status === "sending") return;
 
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
@@ -92,11 +116,54 @@ export function Contact() {
       return;
     }
 
-    setStatus("success");
-    setFeedback(contact.success);
-    setName("");
-    setEmail("");
-    setMessage("");
+    const previous = readSendLimit();
+    if (previous) {
+      setStatus("error");
+      setFeedback(contact.errorLimit);
+      return;
+    }
+
+    setStatus("sending");
+    setFeedback(contact.sending);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "Nytt meddelande från portfolion",
+          from_name: "Ny Kund - Portfolio",
+          name: trimmedName,
+          email: trimmedEmail,
+          message: trimmedMessage,
+        }),
+      });
+
+      const data = (await response.json()) as { success?: boolean };
+
+      if (!response.ok || !data.success) {
+        setStatus("error");
+        setFeedback(contact.errorSend);
+        return;
+      }
+
+      localStorage.setItem(
+        SEND_LIMIT_KEY,
+        JSON.stringify({ at: Date.now(), email: trimmedEmail.toLowerCase() }),
+      );
+      setStatus("success");
+      setFeedback(contact.success);
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch {
+      setStatus("error");
+      setFeedback(contact.errorSend);
+    }
   }
 
   const inputClassName =
@@ -143,6 +210,7 @@ export function Contact() {
           noValidate
           className="rounded-[12px] border border-border bg-card p-6 sm:p-8"
         >
+          <input type="hidden" name="from_name" value="Ny Kund - Portfolio" />
           <div className="space-y-5">
             <div>
               <label
@@ -157,6 +225,7 @@ export function Contact() {
                 type="text"
                 autoComplete="name"
                 required
+                disabled={status === "sending"}
                 value={name}
                 onChange={(event) => {
                   setName(event.target.value);
@@ -180,6 +249,7 @@ export function Contact() {
                 type="email"
                 autoComplete="email"
                 required
+                disabled={status === "sending"}
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
@@ -202,6 +272,7 @@ export function Contact() {
                 name="message"
                 rows={5}
                 required
+                disabled={status === "sending"}
                 value={message}
                 onChange={(event) => {
                   setMessage(event.target.value);
@@ -215,10 +286,22 @@ export function Contact() {
 
           <button
             type="submit"
-            className="mt-6 inline-flex w-full items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-medium tracking-wide text-background transition-opacity hover:opacity-90 sm:w-auto"
+            disabled={status === "sending"}
+            className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-medium tracking-wide text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
           >
-            {contact.submit}
+            {status === "sending" ? contact.sending : contact.submit}
           </button>
+
+          <p className="mt-4 text-[10px] leading-relaxed text-muted/80 sm:text-xs">
+            {contact.privacyNote}{" "}
+            <Link
+              href="/privacy"
+              className="text-foreground/65 underline decoration-border underline-offset-4 transition-colors hover:text-accent"
+            >
+              {contact.privacyLink}
+            </Link>
+            .
+          </p>
 
           <p
             role="status"

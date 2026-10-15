@@ -54,7 +54,7 @@ function DemoActions({
           {githubLabel}
         </span>
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-muted/80">{hint}</p>
+      <p className="mt-3 text-[10px] leading-relaxed text-muted/80 sm:text-xs">{hint}</p>
     </>
   );
 }

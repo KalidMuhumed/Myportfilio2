@@ -81,9 +81,29 @@
     "message": "Message",
     "messagePlaceholder": "Tell me briefly about your project or question…",
     "submit": "Send message",
+    "sending": "Sending…",
     "errorRequired": "Please fill in name, email, and message before sending.",
     "errorEmail": "Please enter a valid email address.",
-    "success": "Thanks! Your message is ready. I'll get back to you as soon as I can."
+    "errorSend": "The message could not be sent. Try again, or email kalid.automations@gmail.com.",
+    "errorLimit": "You can only send one message per day. Try again tomorrow, or email kalid.automations@gmail.com.",
+    "success": "Thanks! Your message has been sent. I'll get back to you as soon as I can.",
+    "privacyNote": "Your details are handled securely and used only to reply to your request. Read more in our",
+    "privacyLink": "Privacy policy"
+  },
+  "privacy": {
+    "title": "Privacy & data handling",
+    "intro": "We value your privacy and keep data collection to a minimum. Here is a clear overview of how we handle the information you share with us.",
+    "collectTitle": "What information we collect",
+    "collectBody": "When you contact us or send a quote request through the form, we collect your name, email address, and message. To protect the system from spam, our form service (Web3Forms) is used.",
+    "useTitle": "How we use the information",
+    "useBody": "Your details are used only so we can read your request, consider your proposal, and reply. The information is delivered directly to our email. We never use your details for automated marketing, newsletters, or similar, and we do not share your data with third parties.",
+    "controlTitle": "Your control over the data",
+    "controlBody": "You can always ask us to delete your information. If you want us to remove your quote request and contact details from our systems, send a message to kalid.automations@gmail.com and we will delete the email right away."
+  },
+  "integrations": {
+    "eyebrow": "Integrations",
+    "intro": "I connect your systems and automate workflows. From AI and CRM to payments. Here are some of my integration tools.",
+    "aria": "Tools and platforms"
   },
   "footer": {
     "home": "Home",

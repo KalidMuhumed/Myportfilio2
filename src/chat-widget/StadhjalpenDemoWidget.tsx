@@ -402,7 +402,7 @@ export function StadhjalpenDemoWidget({
   };
 
   return (
-    <div ref={rootRef} className="agy-embed relative h-full min-h-[560px] w-full">
+    <div ref={rootRef} className="agy-embed relative h-full min-h-[560px] w-full font-sans">
       <style>{`
         .agy-embed { --agy-primary: ${ACCENT}; }
         .agy-embed .agy-window {
@@ -414,8 +414,8 @@ export function StadhjalpenDemoWidget({
           border: 1px solid rgba(255,255,255,0.08);
           box-shadow: 0 8px 40px rgba(0,0,0,0.45);
           display: flex; flex-direction: column; z-index: 1; overflow: hidden;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          font-size: 14px;
+          font-family: inherit;
+          font-size: 13px;
         }
         .agy-embed .agy-header {
           background: var(--agy-primary); color: #fff; padding: 14px 16px;
@@ -423,7 +423,7 @@ export function StadhjalpenDemoWidget({
           flex-shrink: 0; border-bottom: 1px solid rgba(255,255,255,0.1);
           box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
-        .agy-embed .agy-header span { font-size: 13px; opacity: 0.85; font-weight: 400; }
+        .agy-embed .agy-header span { font-size: 12px; opacity: 0.85; font-weight: 400; }
         .agy-embed .agy-messages {
           flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto;
           padding: 16px; display: flex; flex-direction: column; gap: 10px;
@@ -431,7 +431,7 @@ export function StadhjalpenDemoWidget({
           scrollbar-color: rgba(255,255,255,0.2) transparent;
         }
         .agy-embed .agy-msg {
-          padding: 7px 11px; border-radius: 12px; font-size: 13px; line-height: 1.4;
+          padding: 7px 11px; border-radius: 12px; font-size: 12px; line-height: 1.4;
           width: max-content; max-width: min(92%, 280px); white-space: normal;
           overflow-wrap: anywhere; word-break: break-word;
         }
@@ -478,7 +478,7 @@ export function StadhjalpenDemoWidget({
         }
         .agy-embed .agy-input {
           flex: 1; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
-          padding: 7px 10px; font-size: 13px; outline: none; resize: none;
+          padding: 7px 10px; font-size: 12px; outline: none; resize: none;
           line-height: 1.4; min-height: 38px; max-height: 140px;
           overflow-y: hidden; font-family: inherit;
           background: rgba(255,255,255,0.04); color: #FBFBF9;
@@ -498,21 +498,28 @@ export function StadhjalpenDemoWidget({
           border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 8px;
         }
         .agy-embed .agy-booking-card label {
-          display: flex; flex-direction: column; gap: 4px; font-size: 11px;
+          display: flex; flex-direction: column; gap: 4px; font-size: 10px;
           color: rgba(251,251,249,0.7);
         }
         .agy-embed .agy-booking-card input,
         .agy-embed .agy-booking-card select {
           background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 8px; color: #FBFBF9; padding: 7px 9px; font-size: 13px;
+          border-radius: 8px; color: #FBFBF9; padding: 7px 9px; font-size: 12px;
           font-family: inherit; outline: none; width: 100%;
         }
         .agy-embed .agy-booking-submit {
           margin-top: 4px; border: none; border-radius: 8px; background: #d97757;
-          color: #fff; font-size: 13px; font-weight: 600; padding: 8px 12px;
+          color: #fff; font-size: 12px; font-weight: 600; padding: 8px 12px;
           font-family: inherit; cursor: default;
         }
         .agy-embed .agy-booking-submit:disabled { opacity: 0.55; }
+        .agy-embed .agy-window input,
+        .agy-embed .agy-window textarea,
+        .agy-embed .agy-window select,
+        .agy-embed .agy-window button,
+        .agy-embed .agy-window label {
+          font-family: inherit;
+        }
       `}</style>
 
       <div className="agy-window" role="dialog" aria-label={`${COMPANY_NAME} chatt`}>
