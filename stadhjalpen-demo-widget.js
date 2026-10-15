@@ -546,7 +546,7 @@
 
     if (
       !(await demoVisitorMessage(
-        'Hej! Har ni ledig tid för hemstädning i Göteborg på fredag?',
+        'Har ni ledig tid för hemstädning i Göteborg på fredag?',
         700
       ))
     )
@@ -554,7 +554,7 @@
 
     if (
       !(await demoBotReply(
-        'Hej! Vad vill du ha hjälp med? Info, offert eller boka tid?',
+        'Absolut! Vad vill du ha hjälp med? Info, offert eller boka tid?',
         1100,
         800
       ))
@@ -565,24 +565,32 @@
 
     if (!(await demoBotReply('Okej, jag kollar vilka tider som är lediga.', 1100, 600))) return;
 
-    const searching = showTypingIndicator();
-    await sleep(1400);
-    if (abortDemoIfClosed(searching)) return;
-    if (searching.parentNode) {
-      const row = searching.parentNode.classList.contains('agy-msg-row')
-        ? searching.parentNode
-        : searching;
+    const removeIndicator = (el) => {
+      if (!el.parentNode) return;
+      const row = el.parentNode.classList.contains('agy-msg-row') ? el.parentNode : el;
       if (row.parentNode) row.parentNode.removeChild(row);
-    }
+    };
+
+    // "Searching available slots" — typing dots
+    const searching = showTypingIndicator();
+    await sleep(2000);
+    if (abortDemoIfClosed(searching)) return;
+    removeIndicator(searching);
 
     if (
       !(await demoBotReply(
         'Lediga tider på fredag: 09:00 och 13:00. Fyll i formuläret så skickar vi din förfrågan.',
-        900,
-        500
+        3000,
+        600
       ))
     )
       return;
+
+    // "Fetching the form" — typing dots while the visitor finishes reading
+    const fetchingForm = showTypingIndicator();
+    await sleep(4400);
+    if (abortDemoIfClosed(fetchingForm)) return;
+    removeIndicator(fetchingForm);
 
     const form = appendBookingForm();
     await sleep(400);

@@ -187,7 +187,7 @@ export function StadhjalpenDemoWidget({
 
       if (
         !(await visitorType(
-          "Hej! Har ni ledig tid för hemstädning i Göteborg på fredag?",
+          "Har ni ledig tid för hemstädning i Göteborg på fredag?",
           700,
         ))
       ) {
@@ -196,7 +196,7 @@ export function StadhjalpenDemoWidget({
 
       if (
         !(await botReply(
-          "Hej! Vad vill du ha hjälp med? Info, offert eller boka tid?",
+          "Absolut! Vad vill du ha hjälp med? Info, offert eller boka tid?",
           1100,
           800,
         ))
@@ -216,21 +216,29 @@ export function StadhjalpenDemoWidget({
         return;
       }
 
+      // "Searching available slots" — typing dots
       const searchId = `search-${Date.now()}`;
       setMessages((prev) => [...prev, { id: searchId, kind: "typing" }]);
-      await sleep(1400);
+      await sleep(2000);
       if (stop()) return;
       setMessages((prev) => prev.filter((m) => m.id !== searchId));
 
       if (
         !(await botReply(
           "Lediga tider på fredag: 09:00 och 13:00. Fyll i formuläret så skickar vi din förfrågan.",
-          900,
-          500,
+          3000,
+          600, // short beat so the visitor starts reading
         ))
       ) {
         return;
       }
+
+      // "Fetching the form" — typing dots while the visitor finishes reading
+      const fetchFormId = `fetch-form-${Date.now()}`;
+      setMessages((prev) => [...prev, { id: fetchFormId, kind: "typing" }]);
+      await sleep(4400);
+      if (stop()) return;
+      setMessages((prev) => prev.filter((m) => m.id !== fetchFormId));
 
       const formId = `form-${Date.now()}`;
       setMessages((prev) => [

@@ -22,7 +22,7 @@ export const stadhjalpenTenant: TenantConfig = {
   autoPlayScript: [
     {
       role: "visitor",
-      text: "Hej! Har ni ledig tid för hemstädning i Göteborg på fredag?",
+      text: "Har ni ledig tid för hemstädning i Göteborg på fredag?",
     },
     {
       role: "ai",
