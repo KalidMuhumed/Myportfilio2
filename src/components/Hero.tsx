@@ -13,26 +13,18 @@ export function Hero() {
       className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 pb-16 pt-10 sm:px-6"
     >
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
-        {/* Glow is centered on the portrait so it expands evenly around it */}
-        <div className="relative flex h-44 w-44 items-center justify-center md:h-52 md:w-52">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-[-1px] z-0"
-          >
-            <div className="animate-portrait-glow h-full w-full rounded-full bg-[radial-gradient(circle,transparent_72%,rgba(217,119,87,0.45)_88%,rgba(217,119,87,0.2)_96%,transparent_100%)]" />
-          </div>
-
-          <div className="animate-fade-in relative z-10 h-full w-full overflow-hidden rounded-full">
-            <Image
-              fill
-              src="/hero-portrait.jpg"
-              alt={hero.portraitAlt}
-              className="object-cover object-center"
-              sizes="(max-width: 768px) 352px, 416px"
-              quality={95}
-              priority
-            />
-          </div>
+        {/* Plain portrait, no glow/effects. Source is a 460x460 square, shown 1:1 → no crop/zoom.
+            `unoptimized` serves the 16 KB original as-is (no WebP re-encode = no extra softness). */}
+        <div className="animate-fade-in relative h-44 w-44 overflow-hidden rounded-full md:h-52 md:w-52">
+          <Image
+            src="/hero-portrait.jpg"
+            alt={hero.portraitAlt}
+            width={460}
+            height={460}
+            className="h-full w-full object-cover"
+            unoptimized
+            priority
+          />
         </div>
 
         <p className="animate-fade-up mt-3 text-center text-xs font-medium tracking-wide text-zinc-400 sm:text-sm [animation-delay:80ms]">
