@@ -59,6 +59,10 @@
     "title": "Utvalda projekt",
     "intro": "Ett urval fullstack- och automationsprojekt, från webhook-pipelines till dashboards som håller ihop affärsflöden.",
     "liveDemo": "Live Demo",
+    "architecture": "Arkitektur",
+    "architectureTitle": "Klientisolering",
+    "architectureBody": "Varje kund har egen data, åtkomst, bearbetning och säkerhet. En klient blandas inte med en annan.",
+    "architectureAlt": "Arkitekturdiagram för klientisolering",
     "github": "GitHub",
     "mockupAlt": "Mockup för {title}",
     "featured": {

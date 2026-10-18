@@ -59,6 +59,10 @@
     "title": "Selected projects",
     "intro": "A selection of fullstack and automation projects, from webhook pipelines to dashboards that hold business flows together.",
     "liveDemo": "Live Demo",
+    "architecture": "Architecture",
+    "architectureTitle": "Client isolation",
+    "architectureBody": "Each client keeps its own data, access, processing, and security. One tenant never mixes with another.",
+    "architectureAlt": "Architecture diagram for client isolation",
     "github": "GitHub",
     "mockupAlt": "Mockup for {title}",
     "featured": {

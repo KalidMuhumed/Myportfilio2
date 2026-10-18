@@ -1,7 +1,7 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
-import { useRef, useState } from "react";
+import { Boxes, ExternalLink } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { StadhjalpenDemoWidget } from "@/chat-widget/StadhjalpenDemoWidget";
 import { useDictionary } from "@/i18n/LanguageProvider";
 
@@ -27,30 +27,47 @@ function GithubIcon({ size = 16 }: { size?: number }) {
 
 function DemoActions({
   liveDemoLabel,
+  architectureLabel,
   githubLabel,
   hint,
+  architectureOpen,
   onReplay,
+  onArchitecture,
 }: {
   liveDemoLabel: string;
+  architectureLabel: string;
   githubLabel: string;
   hint: string;
+  architectureOpen: boolean;
   onReplay: () => void;
+  onArchitecture: () => void;
 }) {
   const buttonClassName =
-    "inline-flex min-h-11 touch-manipulation select-none items-center gap-2 rounded-md border border-border bg-transparent px-3.5 py-2.5 text-sm text-foreground transition-colors hover:border-accent hover:text-accent active:border-accent active:text-accent active:scale-[0.98]";
+    "inline-flex h-11 min-w-0 flex-1 basis-0 touch-manipulation select-none items-center justify-center gap-1 whitespace-nowrap rounded-md border bg-transparent px-1.5 text-[11px] leading-none transition-colors hover:border-accent hover:text-accent active:border-accent active:text-accent active:scale-[0.98] md:h-auto md:min-h-11 md:flex-none md:basis-auto md:gap-2 md:px-3.5 md:py-2.5 md:text-sm";
+  const idleClassName = "border-border text-foreground";
 
   return (
     <>
-      <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-        <button type="button" className={buttonClassName} onClick={onReplay}>
-          <ExternalLink size={16} strokeWidth={1.75} />
+      <div className="flex w-full flex-nowrap items-center gap-1.5 md:w-auto md:gap-3">
+        <button type="button" className={`${buttonClassName} ${idleClassName}`} onClick={onReplay}>
+          <ExternalLink size={14} strokeWidth={1.75} className="shrink-0" />
           {liveDemoLabel}
         </button>
+        <button
+          type="button"
+          className={`${buttonClassName} ${architectureOpen ? "border-accent text-accent" : idleClassName}`}
+          data-architecture-toggle=""
+          aria-expanded={architectureOpen}
+          onClick={onArchitecture}
+        >
+          <Boxes size={14} strokeWidth={1.75} className="shrink-0" />
+          {architectureLabel}
+        </button>
         <span
-          className="inline-flex min-h-11 cursor-default items-center gap-2 rounded-md border border-border px-3.5 py-2.5 text-sm text-muted opacity-70"
+          className={`${buttonClassName} cursor-default border-border text-muted opacity-70`}
           aria-disabled="true"
         >
-          <GithubIcon size={16} />
+          <GithubIcon size={14} />
           {githubLabel}
         </span>
       </div>
@@ -62,6 +79,9 @@ function DemoActions({
 export function Projects() {
   const { projects } = useDictionary();
   const demoRef = useRef<HTMLDivElement>(null);
+  const architectureRef = useRef<HTMLDivElement>(null);
+  const [showArchitecture, setShowArchitecture] = useState(false);
+  const [architectureSession, setArchitectureSession] = useState(0);
 
   // Initial mount ("boot") waits until the widget is visible before playing.
   // Live Demo bumps the key → widget remounts → plays immediately. No page reload.
@@ -71,6 +91,35 @@ export function Projects() {
     setDemoKey(String(Date.now()));
     demoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const openArchitecture = () => {
+    setShowArchitecture(true);
+    setArchitectureSession((session) => session + 1);
+  };
+
+  useEffect(() => {
+    if (!showArchitecture) return;
+
+    architectureRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    const closeTimer = window.setTimeout(() => {
+      setShowArchitecture(false);
+    }, 10000);
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (architectureRef.current?.contains(target)) return;
+      if (target instanceof Element && target.closest("[data-architecture-toggle]")) return;
+      setShowArchitecture(false);
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.clearTimeout(closeTimer);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [showArchitecture, architectureSession]);
 
   return (
     <section
@@ -116,9 +165,12 @@ export function Projects() {
               <div className="mt-5 hidden md:mt-6 md:block">
                 <DemoActions
                   liveDemoLabel={projects.liveDemo}
+                  architectureLabel={projects.architecture}
                   githubLabel={projects.github}
                   hint={projects.featured.hint}
+                  architectureOpen={showArchitecture}
                   onReplay={replayDemo}
+                  onArchitecture={openArchitecture}
                 />
               </div>
             </div>
@@ -142,13 +194,41 @@ export function Projects() {
             <div className="relative z-50 border-t border-border bg-card p-4 md:hidden">
               <DemoActions
                 liveDemoLabel={projects.liveDemo}
+                architectureLabel={projects.architecture}
                 githubLabel={projects.github}
                 hint={projects.featured.hint}
+                architectureOpen={showArchitecture}
                 onReplay={replayDemo}
+                onArchitecture={openArchitecture}
               />
             </div>
           </div>
         </article>
+
+        {showArchitecture ? (
+          <div
+            ref={architectureRef}
+            id="architecture"
+            className="mt-8 scroll-mt-20 sm:mt-10"
+          >
+            <p className="text-xs font-medium uppercase tracking-[0.28em] text-accent">
+              {projects.architecture}
+            </p>
+            <h3 className="mt-3 font-serif text-xl font-medium tracking-tight text-foreground sm:text-2xl">
+              {projects.architectureTitle}
+            </h3>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+              {projects.architectureBody}
+            </p>
+            <div className="mx-auto mt-5 w-fit max-w-full sm:mt-6">
+              <img
+                src="/architecture/last.svg"
+                alt={projects.architectureAlt}
+                className="h-auto w-[402px] max-w-full"
+              />
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );
