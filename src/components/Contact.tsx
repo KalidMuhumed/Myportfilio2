@@ -64,10 +64,17 @@ const directLinks = [
   },
 ];
 
-const WEB3FORMS_ACCESS_KEY =
-  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+const WEB3FORMS_ACCESS_KEY = (
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? ""
+).trim();
 const SEND_LIMIT_MS = 24 * 60 * 60 * 1000;
 const SEND_LIMIT_KEY = "portfolio-contact-limit";
+
+type Web3FormsResponse = {
+  success?: boolean;
+  message?: string;
+  body?: { message?: string };
+};
 
 type SendLimit = { at: number; email: string };
 
@@ -125,6 +132,9 @@ export function Contact() {
     }
 
     if (!WEB3FORMS_ACCESS_KEY) {
+      console.error(
+        "Web3Forms: NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY is missing or empty in this build.",
+      );
       setStatus("error");
       setFeedback(contact.errorSend);
       return;
@@ -133,6 +143,16 @@ export function Contact() {
     setStatus("sending");
     setFeedback(contact.sending);
 
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      name: trimmedName,
+      email: trimmedEmail,
+      message: trimmedMessage,
+      subject: "Nytt meddelande fran portfolion",
+      from_name: "Portfolio Contact",
+      botcheck: false,
+    };
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -140,19 +160,20 @@ export function Contact() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: "Nytt meddelande från portfolion",
-          from_name: "Ny Kund - Portfolio",
-          name: trimmedName,
-          email: trimmedEmail,
-          message: trimmedMessage,
-        }),
+        body: JSON.stringify(payload),
       });
 
-      const data = (await response.json()) as { success?: boolean };
+      const data = (await response.json()) as Web3FormsResponse;
 
       if (!response.ok || !data.success) {
+        console.log("Web3Forms error response:", data);
+        console.log("Web3Forms HTTP status:", response.status);
+        console.log(
+          "Web3Forms access_key present:",
+          Boolean(WEB3FORMS_ACCESS_KEY),
+          "length:",
+          WEB3FORMS_ACCESS_KEY.length,
+        );
         setStatus("error");
         setFeedback(contact.errorSend);
         return;
@@ -167,7 +188,8 @@ export function Contact() {
       setName("");
       setEmail("");
       setMessage("");
-    } catch {
+    } catch (error) {
+      console.log("Web3Forms network/parse error:", error);
       setStatus("error");
       setFeedback(contact.errorSend);
     }
@@ -217,7 +239,7 @@ export function Contact() {
           noValidate
           className="rounded-[12px] border border-border bg-card p-6 sm:p-8"
         >
-          <input type="hidden" name="from_name" value="Ny Kund - Portfolio" />
+          <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
           <div className="space-y-5">
             <div>
               <label
