@@ -64,7 +64,8 @@ const directLinks = [
   },
 ];
 
-const WEB3FORMS_ACCESS_KEY = "dd931b1a-fc6a-44c5-a249-4ebfe0a7e24e";
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 const SEND_LIMIT_MS = 24 * 60 * 60 * 1000;
 const SEND_LIMIT_KEY = "portfolio-contact-limit";
 
@@ -120,6 +121,12 @@ export function Contact() {
     if (previous) {
       setStatus("error");
       setFeedback(contact.errorLimit);
+      return;
+    }
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setStatus("error");
+      setFeedback(contact.errorSend);
       return;
     }
 

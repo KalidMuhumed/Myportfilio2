@@ -1,14 +1,14 @@
 "use client";
 
 /**
- * Portfolio embed — scripted Städhjälpen demo.
+ * Portfolio embed: scripted Städhjälpen demo.
  *
  * Autoplay:
  * - `autoStart="visible"` (default): on mount/refresh the demo waits until the
  *   widget is actually in the viewport, then plays. Visitors never miss the start.
  * - `autoStart="immediate"`: plays right away (used when Live Demo restarts it).
  *
- * Live Demo remounts this component via a changed `key` — no page reload.
+ * Live Demo remounts this component via a changed `key` (no page reload).
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -216,7 +216,7 @@ export function StadhjalpenDemoWidget({
         return;
       }
 
-      // "Searching available slots" — typing dots
+      // "Searching available slots" (typing dots)
       const searchId = `search-${Date.now()}`;
       setMessages((prev) => [...prev, { id: searchId, kind: "typing" }]);
       await sleep(2000);
@@ -233,7 +233,7 @@ export function StadhjalpenDemoWidget({
         return;
       }
 
-      // "Fetching the form" — typing dots while the visitor finishes reading
+      // "Fetching the form" (typing dots while the visitor finishes reading)
       const fetchFormId = `fetch-form-${Date.now()}`;
       setMessages((prev) => [...prev, { id: fetchFormId, kind: "typing" }]);
       await sleep(4400);
@@ -348,7 +348,7 @@ export function StadhjalpenDemoWidget({
     ) {
       schedule();
     } else {
-      // On refresh: don't play to an empty room — wait until the widget is on screen.
+      // On refresh: don't play to an empty room; wait until the widget is on screen.
       observer = new IntersectionObserver(
         (entries) => {
           if (entries.some((e) => e.isIntersecting)) {

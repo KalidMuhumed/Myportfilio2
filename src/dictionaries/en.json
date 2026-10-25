@@ -13,7 +13,7 @@
     "name": "Kalid Muhumed",
     "titleLine1": "Computer Engineer &",
     "titleLine2": "Fullstack Automation",
-    "intro": "I'm a computer engineer and fullstack developer building scalable web applications, smart workflow automations, and AI integrations.",
+    "intro": "I'm a junior computer engineer and developer building modern web applications, smart automations, and AI-driven flows that make businesses more efficient.",
     "cta": "Contact me",
     "portraitAlt": "Portrait of Kalid Muhumed"
   },
@@ -22,42 +22,50 @@
     "title": "Background, education & skills",
     "backgroundTitle": "Background",
     "paragraphs": [
-      "I'm Kalid Muhumed, a fullstack developer focused on automation. I build web apps in Next.js and connect them with Python services, APIs, and webhooks so manual steps become reliable flows.",
-      "Whether it's a dashboard, a lead pipeline, or a nightly sync between systems, I want the result to feel simple for the user and solid under the hood.",
-      "Right now I'm working on projects where interfaces, data, and automated workflows meet, from prototype to something you can trust in production."
+      "I'm Kalid Muhumed, a computer engineer and junior fullstack developer. My focus is building modern web applications from the ground up, where thoughtful design and scalable architecture meet smart automation.",
+      "As a computer engineer I cover UI and web design through to networking, IoT, sensors, and embedded systems, so I can architect solutions where hardware, cloud services, and web apps work together.",
+      "In my projects I connect systems and build automated flows that move data reliably in the background. I work agile from sketch and prototype to production. Always simple for the user and solid under the hood."
     ],
-    "educationTitle": "Education",
+    "educationTitle": "Education & competence areas",
     "education": [
       {
-        "title": "Data / networking & systems development",
-        "detail": "A practical focus on networks, data flows, and modern web stacks, building solutions that hold up in production."
+        "title": "Computer engineering & system architecture",
+        "detail": "Software engineering, data structures, operating systems, network design, cybersecurity, and distributed systems."
       },
       {
-        "title": "Automation & integrations",
-        "detail": "Deep dives into n8n, webhooks, and Python-based flows that remove manual steps between systems."
+        "title": "IoT & embedded systems",
+        "detail": "Hardware-near logic, sensor technology, control systems, and regulation engineering."
+      },
+      {
+        "title": "Web applications, design & automation",
+        "detail": "End-to-end ownership from UI/UX and agile workflows to integrations and automated processes in production."
       }
     ],
     "skillsTitle": "Skills",
-    "skillsIntro": "Tech stack grouped by how I actually work.",
+    "skillsIntro": "Tech stack and tools grouped by how I build and integrate systems.",
     "skillGroups": [
       {
-        "title": "Frontend",
-        "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML / CSS"]
+        "title": "Frontend & design",
+        "skills": ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "HTML / CSS", "UI / UX Design"]
       },
       {
-        "title": "Backend",
-        "skills": ["Python", "Node.js", "REST APIs", "PostgreSQL", "Webhooks"]
+        "title": "Backend & database",
+        "skills": ["Python", "C++", "Node.js", "PostgreSQL / SQL", "Supabase", "REST APIs", "System architecture"]
       },
       {
-        "title": "Automation & Tools",
-        "skills": ["n8n", "Workflow automation", "API integrations", "Git", "Docker"]
+        "title": "AI, automation & methodology",
+        "skills": ["AI integrations", "n8n", "Webhooks", "Workflow automation", "Agile methods"]
+      },
+      {
+        "title": "Systems, IoT & infrastructure",
+        "skills": ["IoT & embedded systems", "GNU/Linux", "Docker", "Git", "Networking & security"]
       }
     ]
   },
   "projects": {
     "eyebrow": "Portfolio",
-    "title": "Selected projects",
-    "intro": "A selection of fullstack and automation projects, from webhook pipelines to dashboards that hold business flows together.",
+    "title": "Featured project",
+    "intro": "A featured fullstack and automation project with a live demo.",
     "liveDemo": "Live Demo",
     "architecture": "Architecture",
     "architectureTitle": "Client isolation",
@@ -67,8 +75,8 @@
     "mockupAlt": "Mockup for {title}",
     "featured": {
       "eyebrow": "Live demo",
-      "title": "AI Tenant Chat, Städhjälpen Väst",
-      "description": "AI chat widget for Städhjälpen Väst. Auto-play shows the assistant asking, checking times, and sending a booking request via form. It does not book by itself.",
+      "title": "Chat assistant, Städhjälpen Väst",
+      "description": "A chat assistant for Städhjälpen Väst that helps visitors ask questions, check available times, and send a booking request. The live demo shows the flow. It does not book on its own.",
       "tags": ["Next.js", "AI Chat", "TypeScript"],
       "hint": "Press Live Demo to replay the conversation or scroll up and down."
     },
@@ -91,18 +99,18 @@
     "errorSend": "The message could not be sent. Try again, or email kalid.automations@gmail.com.",
     "errorLimit": "You can only send one message per day. Try again tomorrow, or email kalid.automations@gmail.com.",
     "success": "Thanks! Your message has been sent. I'll get back to you as soon as I can.",
-    "privacyNote": "Your details are handled securely and used only to reply to your request. Read more in our",
+    "privacyNote": "Your details are handled securely and used only to reply to your request. Read more in my",
     "privacyLink": "Privacy policy"
   },
   "privacy": {
     "title": "Privacy & data handling",
-    "intro": "We value your privacy and keep data collection to a minimum. Here is a clear overview of how we handle the information you share with us.",
-    "collectTitle": "What information we collect",
-    "collectBody": "When you contact us or send a quote request through the form, we collect your name, email address, and message. To protect the system from spam, our form service (Web3Forms) is used.",
-    "useTitle": "How we use the information",
-    "useBody": "Your details are used only so we can read your request, consider your proposal, and reply. The information is delivered directly to our email. We never use your details for automated marketing, newsletters, or similar, and we do not share your data with third parties.",
+    "intro": "I value your privacy and collect as little data as possible. Here is a clear overview of how I handle the information you share with me.",
+    "collectTitle": "What information I collect",
+    "collectBody": "When you contact me through the form, I collect your name, email address, and message. To protect the form from spam, the Web3Forms service is used.",
+    "useTitle": "How I use the information",
+    "useBody": "Your details are used only so I can read your request and reply. The information is sent to my email. I never use your details for marketing or newsletters, and I do not share your data with third parties.",
     "controlTitle": "Your control over the data",
-    "controlBody": "You can always ask us to delete your information. If you want us to remove your quote request and contact details from our systems, send a message to kalid.automations@gmail.com and we will delete the email right away."
+    "controlBody": "You can always ask me to delete your information. If you want me to remove your request and contact details, email kalid.automations@gmail.com and I will delete the message."
   },
   "integrations": {
     "eyebrow": "Integrations",

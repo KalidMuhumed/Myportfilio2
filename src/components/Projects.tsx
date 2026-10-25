@@ -63,13 +63,15 @@ function DemoActions({
           <Boxes size={14} strokeWidth={1.75} className="shrink-0" />
           {architectureLabel}
         </button>
-        <span
-          className={`${buttonClassName} cursor-default border-border text-muted opacity-70`}
-          aria-disabled="true"
+        <a
+          href="https://github.com/KalidMuhumed"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${buttonClassName} ${idleClassName}`}
         >
           <GithubIcon size={14} />
           {githubLabel}
-        </span>
+        </a>
       </div>
       <p className="mt-3 text-[10px] leading-relaxed text-muted/80 sm:text-xs">{hint}</p>
     </>

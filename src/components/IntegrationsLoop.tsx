@@ -11,6 +11,8 @@ const tools: { name: string; slug: string | null }[] = [
   { name: "OpenAI", slug: "openai" },
   { name: "Stripe", slug: "stripe" },
   { name: "Swish", slug: "swish" },
+  { name: "Vercel", slug: "vercel" },
+  { name: "GoHighLevel", slug: "highlevel" },
   { name: "Supabase", slug: "supabase" },
 ];
 
@@ -98,33 +100,39 @@ function GoogleCalendarMark() {
 
 function SwishMark() {
   return (
-    <svg viewBox="90 0 240 420" aria-hidden className="h-5 w-5">
-      <defs>
-        <linearGradient id="swish-red" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#ef2131" />
-          <stop offset="1" stopColor="#fecf2c" />
-        </linearGradient>
-        <linearGradient id="swish-warm" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#fbc52c" />
-          <stop offset="0.5" stopColor="#ef52e2" />
-          <stop offset="1" stopColor="#661eec" />
-        </linearGradient>
-        <linearGradient id="swish-cool" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#78f6d8" />
-          <stop offset="0.5" stopColor="#70a4f3" />
-          <stop offset="1" stopColor="#661eec" />
-        </linearGradient>
-        <linearGradient id="swish-green" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stopColor="#536eed" />
-          <stop offset="0.5" stopColor="#64d769" />
-          <stop offset="1" stopColor="#fecf2c" />
-        </linearGradient>
-      </defs>
-      <path fill="url(#swish-red)" d="M119.33,399.16c84.29,40.31,188.31,20.36,251.16-54.52,74.49-88.75,62.92-221.06-25.84-295.53l-59.01,70.31c69.34,58.17,78.38,161.54,20.19,230.88-46.4,55.29-122.8,73.75-186.5,48.86" />
-      <path fill="url(#swish-warm)" d="M119.33,399.16c84.29,40.31,188.31,20.36,251.16-54.52,7.7-9.17,14.47-18.81,20.34-28.8,9.92-61.67-11.9-126.86-63.24-169.93-13.04-10.94-27.16-19.76-41.94-26.49,69.33,58.18,78.37,161.54,20.18,230.87-46.4,55.29-122.8,73.75-186.5,48.86" />
-      <path fill="url(#swish-cool)" d="M300.25,20.43C215.97-19.88,111.94.07,49.1,74.95c-74.49,88.75-62.92,221.06,25.84,295.53l59.01-70.31c-69.34-58.17-78.38-161.54-20.19-230.88C160.16,14,236.56-4.46,300.25,20.43" />
-      <path fill="url(#swish-green)" d="M300.25,20.43C215.97-19.88,111.94.07,49.1,74.95c-7.7,9.17-14.47,18.81-20.34,28.8-9.92,61.67,11.9,126.86,63.24,169.93,13.04,10.94,27.16,19.76,41.94,26.49-69.33-58.17-78.37-161.54-20.18-230.87C160.16,14,236.56-4.46,300.25,20.43" />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/integrations/swish-secondary-grayscale-light.svg"
+      alt=""
+      aria-hidden
+      draggable={false}
+      className="h-6 w-auto max-w-[7.5rem] object-contain brightness-75 contrast-90"
+    />
+  );
+}
+
+function VercelMark() {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/integrations/vercel.svg"
+      alt=""
+      aria-hidden
+      draggable={false}
+      className="h-7 w-auto max-w-[8rem] object-contain"
+    />
+  );
+}
+
+/** Text wordmark. Poppins is GoHighLevel's official brand typeface. */
+function HighLevelMark() {
+  return (
+    <span
+      aria-hidden
+      className="font-[family-name:var(--font-ghl)] text-[0.95rem] font-semibold leading-none tracking-tight text-[#A39E93]"
+    >
+      GoHighLevel
+    </span>
   );
 }
 
@@ -136,6 +144,8 @@ function ToolMark({ name, slug }: { name: string; slug: string | null }) {
   if (slug === "openai") return <OpenAiMark />;
   if (slug === "supabase") return <SupabaseMark />;
   if (slug === "swish") return <SwishMark />;
+  if (slug === "vercel") return <VercelMark />;
+  if (slug === "highlevel") return <HighLevelMark />;
 
   return (
     <span className="px-1 text-center text-[9px] font-medium leading-tight tracking-wide text-muted">
@@ -144,14 +154,12 @@ function ToolMark({ name, slug }: { name: string; slug: string | null }) {
   );
 }
 
-function ToolCard({ name, slug }: { name: string; slug: string | null }) {
+function StaticLogo({ name, slug }: { name: string; slug: string | null }) {
   return (
-    <li className="flex shrink-0 flex-col items-center gap-2">
-      <div className="flex h-[52px] w-[52px] items-center justify-center rounded-2xl border-[0.5px] border-solid border-[#D97757] bg-white/5 backdrop-blur-md">
+    <li className="flex h-9 shrink-0 items-center justify-center opacity-80" title={name}>
+      <span className="sr-only">{name}</span>
+      <span className="flex h-8 items-center [&_img]:max-h-8 [&_svg]:h-7 [&_svg]:w-auto [&_svg]:max-w-none">
         <ToolMark name={name} slug={slug} />
-      </div>
-      <span className="max-w-full truncate text-[10px] leading-none tracking-wide text-muted">
-        {name}
       </span>
     </li>
   );
@@ -162,27 +170,16 @@ export function IntegrationsLoop() {
 
   return (
     <section aria-label={integrations.aria} className="border-t border-border py-14 sm:py-20">
-      <p className="px-4 text-center text-xs font-medium uppercase tracking-[0.28em] text-accent sm:px-6">
+      <p className="mb-10 px-4 text-center text-xs font-medium uppercase tracking-[0.28em] text-accent sm:mb-12 sm:px-6">
         {integrations.eyebrow}
       </p>
-      <p className="mx-auto mb-10 mt-4 max-w-2xl px-4 text-center text-sm leading-relaxed text-muted sm:mb-12 sm:px-6">
-        {integrations.intro}
-      </p>
 
-      <div className="logo-fade relative overflow-hidden">
-        <div className="animate-marquee flex w-max motion-reduce:animate-none">
-          {[0, 1].map((copy) => (
-            <ul
-              key={copy}
-              aria-hidden={copy === 1}
-              className="flex shrink-0 items-start gap-12 pr-12"
-            >
-              {tools.map((tool) => (
-                <ToolCard key={`${copy}-${tool.name}`} {...tool} />
-              ))}
-            </ul>
+      <div className="logo-fade relative w-full max-w-full overflow-hidden">
+        <ul className="flex w-full max-w-full items-center justify-start gap-10 overflow-x-auto overscroll-x-contain px-4 pb-1 touch-pan-x [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-12 sm:px-8 md:justify-between md:gap-6 md:px-10 [&::-webkit-scrollbar]:hidden">
+          {tools.map((tool) => (
+            <StaticLogo key={tool.name} {...tool} />
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

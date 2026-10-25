@@ -13,7 +13,7 @@
     "name": "Kalid Muhumed",
     "titleLine1": "Computer Engineer &",
     "titleLine2": "Fullstack Automation",
-    "intro": "Jag är en dataingenjör och utvecklare som bygger moderna webbapplikationer, smarta automationer och AI-drivna flöden som effektiviserar verksamheter.",
+    "intro": "Jag är junior dataingenjör och utvecklare som bygger moderna webbapplikationer, smarta automationer och AI-drivna flöden som effektiviserar verksamheter.",
     "cta": "Kontakta mig",
     "portraitAlt": "Porträtt av Kalid Muhumed"
   },
@@ -22,42 +22,50 @@
     "title": "Bakgrund, utbildning & skills",
     "backgroundTitle": "Bakgrund",
     "paragraphs": [
-      "Jag heter Kalid Muhumed, fullstack developer med fokus på automation. Jag bygger webbappar i Next.js och kopplar ihop dem med Python-tjänster, APIs och webhooks så att manuella steg blir pålitliga flöden.",
-      "Oavsett om det handlar om en dashboard, en lead-pipeline eller en nattlig synk mellan system, vill jag att resultatet ska kännas enkelt för användaren och robust under huven.",
-      "Just nu arbetar jag med projekt där gränssnitt, data och automatiserade workflows möts, från prototyp till något som går att lita på i produktion."
+      "Jag heter Kalid Muhumed och är dataingenjör och junior fullstack-utvecklare. Mitt huvudfokus ligger på att bygga moderna webbapplikationer från grunden, där genomtänkt design och skalbar systemarkitektur möter smart automation.",
+      "Som dataingenjör har jag en teknisk bredd från UI och webbdesign till nätverk, IoT, sensorteknik och inbyggda system. Det gör att jag kan arkitektera lösningar där hårdvara, molntjänster och webbappar samverkar.",
+      "I mina projekt kopplar jag samman system och bygger automatiserade flöden som flyttar data pålitligt i bakgrunden. Jag arbetar agilt från skiss och prototyp till webbapp i produktion. Alltid enkelt för användaren och robust under huven."
     ],
-    "educationTitle": "Utbildning",
+    "educationTitle": "Utbildning & kompetensområden",
     "education": [
       {
-        "title": "Data / nätverk & systemutveckling",
-        "detail": "Praktisk inriktning mot nätverk, dataflöden och moderna webbstackar, med fokus på lösningar som håller i produktion."
+        "title": "Dataingenjör & systemarkitektur",
+        "detail": "Programvaruteknik, datastrukturer, operativsystem, nätverksdesign, cybersäkerhet och distribuerade system."
       },
       {
-        "title": "Automation & integrationer",
-        "detail": "Fördjupning i n8n, webhooks och Python-baserade flöden som eliminerar manuella steg mellan system."
+        "title": "IoT & inbyggda system",
+        "detail": "Hårdvarunära logik, sensorteknik, styrteknik och reglerteknik."
+      },
+      {
+        "title": "Webbapplikationer, design & automation",
+        "detail": "Helhetsansvar från UI/UX och agila arbetsflöden till systemintegrationer och automatiserade processer i produktion."
       }
     ],
     "skillsTitle": "Färdigheter",
-    "skillsIntro": "Tech stack grupperad efter hur jag faktiskt jobbar.",
+    "skillsIntro": "Tech stack och verktyg grupperade efter hur jag bygger och integrerar system.",
     "skillGroups": [
       {
-        "title": "Frontend",
-        "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML / CSS"]
+        "title": "Frontend & design",
+        "skills": ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "HTML / CSS", "UI / UX Design"]
       },
       {
-        "title": "Backend",
-        "skills": ["Python", "Node.js", "REST APIs", "PostgreSQL", "Webhooks"]
+        "title": "Backend & databas",
+        "skills": ["Python", "C++", "Node.js", "PostgreSQL / SQL", "Supabase", "REST APIs", "Systemarkitektur"]
       },
       {
-        "title": "Automation & verktyg",
-        "skills": ["n8n", "Workflow-automation", "API-integrationer", "Git", "Docker"]
+        "title": "AI, automation & metodik",
+        "skills": ["AI-integrationer", "n8n", "Webhooks", "Workflow-automation", "Agila metoder"]
+      },
+      {
+        "title": "System, IoT & infrastruktur",
+        "skills": ["IoT & inbyggda system", "GNU/Linux", "Docker", "Git", "Nätverk & säkerhet"]
       }
     ]
   },
   "projects": {
     "eyebrow": "Portfolio",
-    "title": "Utvalda projekt",
-    "intro": "Ett urval fullstack- och automationsprojekt, från webhook-pipelines till dashboards som håller ihop affärsflöden.",
+    "title": "Utvalt projekt",
+    "intro": "Ett utvalt fullstack- och automationsprojekt med live-demo.",
     "liveDemo": "Live Demo",
     "architecture": "Arkitektur",
     "architectureTitle": "Klientisolering",
@@ -67,8 +75,8 @@
     "mockupAlt": "Mockup för {title}",
     "featured": {
       "eyebrow": "Live demo",
-      "title": "AI Tenant Chat, Städhjälpen Väst",
-      "description": "AI-chattwidget för Städhjälpen Väst. Auto-play visar hur assistenten frågar, kollar tider och skickar en bokningsförfrågan via formulär. Den bokar inte själv.",
+      "title": "Chattassistent, Städhjälpen Väst",
+      "description": "Chattassistent för Städhjälpen Väst som hjälper besökare att ställa frågor, se lediga tider och skicka en bokningsförfrågan. Live-demon visar flödet. Assistenten bokar inte själv.",
       "tags": ["Next.js", "AI Chat", "TypeScript"],
       "hint": "Tryck Live Demo för att spela upp konversationen igen eller scrolla upp och ner."
     },
@@ -91,18 +99,18 @@
     "errorSend": "Meddelandet kunde inte skickas. Försök igen, eller mejla kalid.automations@gmail.com.",
     "errorLimit": "Du kan bara skicka ett meddelande per dygn. Försök igen imorgon, eller mejla kalid.automations@gmail.com.",
     "success": "Tack! Meddelandet är skickat. Jag återkommer så snart jag kan.",
-    "privacyNote": "Dina uppgifter hanteras säkert och används enbart för att besvara din förfrågan. Läs mer i vår",
+    "privacyNote": "Dina uppgifter hanteras säkert och används enbart för att besvara din förfrågan. Läs mer i min",
     "privacyLink": "Integritetspolicy"
   },
   "privacy": {
-    "title": "Integritet & Datahantering",
-    "intro": "Vi värdesätter din integritet och bygger vår verksamhet på minimal datainsamling. Här är en transparent översikt över hur vi hanterar den information du delar med oss.",
-    "collectTitle": "Vilken information vi samlar in",
-    "collectBody": "När du kontaktar oss eller skickar en offertförfrågan via vårt formulär samlar vi in ditt namn, din e-postadress och ditt meddelande. För att skydda systemet mot skräppost används vår formulärtjänst (Web3Forms).",
-    "useTitle": "Hur vi använder informationen",
-    "useBody": "Dina uppgifter används uteslutande för att vi ska kunna läsa din förfrågan, utvärdera ditt förslag och återkomma till dig med ett svar. Informationen levereras direkt till vår e-post. Vi använder aldrig dina uppgifter för automatiserad marknadsföring, nyhetsbrev eller liknande, och vi delar inte din data med tredje part.",
+    "title": "Integritet & datahantering",
+    "intro": "Jag värdesätter din integritet och samlar in så lite data som möjligt. Här är en tydlig översikt över hur jag hanterar informationen du delar med mig.",
+    "collectTitle": "Vilken information jag samlar in",
+    "collectBody": "När du kontaktar mig via formuläret samlar jag in ditt namn, din e-postadress och ditt meddelande. För att skydda formuläret mot skräppost används tjänsten Web3Forms.",
+    "useTitle": "Hur jag använder informationen",
+    "useBody": "Dina uppgifter används bara för att jag ska kunna läsa din förfrågan och återkomma med ett svar. Informationen skickas till min e-post. Jag använder aldrig dina uppgifter för marknadsföring eller nyhetsbrev, och jag delar inte din data med tredje part.",
     "controlTitle": "Din kontroll över datan",
-    "controlBody": "Du har alltid rätt att få din information raderad. Om du vill att vi tar bort din offertförfrågan och dina kontaktuppgifter från våra system, skicka ett meddelande till kalid.automations@gmail.com så raderar vi e-postmeddelandet omedelbart."
+    "controlBody": "Du har alltid rätt att få din information raderad. Om du vill att jag tar bort din förfrågan och dina kontaktuppgifter, mejla kalid.automations@gmail.com så raderar jag meddelandet."
   },
   "integrations": {
     "eyebrow": "Integrationer",
